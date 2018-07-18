@@ -7,7 +7,7 @@ to minimise the number of false positives in the soft tissue class.
 
 ## Architecture
 
-![](architecture-crop.pdf)
+![](architecture.jpg)
 
 * Built on a typical encoder-decoder architecture as
 inspired by [SegNet](http://mi.eng.cam.ac.uk/projects/segnet/).
