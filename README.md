@@ -48,5 +48,6 @@ XNet was benchmarked against two of the leading segmentation networks:
 
 ## More information
 
-For more information and context see the conference poster ```Poster.pdf```
+For more information and context see the conference poster
+```Poster.pdf```.
 
