@@ -1,118 +1,115 @@
-from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
-from keras.models import Model, Sequential
-from keras.layers import Input, Concatenate, Conv2D, MaxPooling2D, UpSampling2D, Dropout, Cropping2D,Convolution2D
+from keras.models import Model
+from keras.layers import Input, Concatenate, Conv2D, MaxPooling2D, UpSampling2D, Dropout, Cropping2D
 from keras.layers import BatchNormalization, Reshape, Layer
-from keras.layers import Activation, Flatten, Dense, ConvLSTM2D, LeakyReLU
+from keras.layers import Activation, Flatten, Dense
 from keras.optimizers import *
 from keras.callbacks import ModelCheckpoint, LearningRateScheduler
 from keras.metrics import categorical_accuracy
 from keras import backend as K
 from keras import losses
-from keras.models import load_model
 
 def model(input_shape=(64,64,3), classes=3, kernel_size = 3, filter_depth = (64,128,256,512,0)):
     
     img_input = Input(shape=input_shape)
-    x = img_input
     
     # Encoder
-    x = Conv2D(filter_depth[0], (kernel_size, kernel_size), padding="same")(x)
-    x = BatchNormalization()(x)
-    x1 = Activation("relu")(x)
-    x = MaxPooling2D(pool_size=(2, 2))(x1)
+    conv1 = Conv2D(filter_depth[0], (kernel_size, kernel_size), padding="same")(img_input)
+    batch1 = BatchNormalization()(conv1)
+    act1 = Activation("relu")(batch1)
+    pool1 = MaxPooling2D(pool_size=(2, 2))(pool1)
     #100x100
     
-    x = Conv2D(filter_depth[1], (kernel_size, kernel_size), padding="same")(x)
-    x = BatchNormalization()(x)
-    x2 = Activation("relu")(x)
-    x = MaxPooling2D(pool_size=(2, 2))(x2)
+    conv2 = Conv2D(filter_depth[1], (kernel_size, kernel_size), padding="same")(pool1)
+    batch2 = BatchNormalization()(conv2)
+    act2 = Activation("relu")(batch2)
+    pool2 = MaxPooling2D(pool_size=(2, 2))(act2)
     #50x50
     
-    x = Conv2D(filter_depth[2], (kernel_size, kernel_size), padding="same")(x)
-    x = BatchNormalization()(x)
-    x3 = Activation("relu")(x)
-    x = MaxPooling2D(pool_size=(2, 2))(x3)
+    conv3 = Conv2D(filter_depth[2], (kernel_size, kernel_size), padding="same")(pool2)
+    batch3 = BatchNormalization()(conv3)
+    act3 = Activation("relu")(batch3)
+    pool3 = MaxPooling2D(pool_size=(2, 2))(act3)
     #25x25
     
     #Flat
-    x = Conv2D(filter_depth[3], (kernel_size, kernel_size), padding="same")(x)
-    x = BatchNormalization()(x)
-    x = Activation("relu")(x)
+    conv4 = Conv2D(filter_depth[3], (kernel_size, kernel_size), padding="same")(pool3)
+    batch4 = BatchNormalization()(conv4)
+    act4 = Activation("relu")(batch4)
     #25x25
     
-    x = Conv2D(filter_depth[3], (kernel_size, kernel_size), padding="same")(x)
-    x = BatchNormalization()(x)
-    x = Activation("relu")(x)
+    conv5 = Conv2D(filter_depth[3], (kernel_size, kernel_size), padding="same")(act4)
+    batch5 = BatchNormalization()(conv5)
+    act5 = Activation("relu")(batch5)
     #25x25
     
     #Up
-    x = UpSampling2D(size=(2, 2))(x)
-    x = Conv2D(filter_depth[2], (kernel_size, kernel_size), padding="same")(x)
-    x = BatchNormalization()(x)
-    y3 = Activation("relu")(x)
-    x = Concatenate()([x3,y3])
+    up6 = UpSampling2D(size=(2, 2))(act5)
+    conv6 = Conv2D(filter_depth[2], (kernel_size, kernel_size), padding="same")(up6)
+    batch6 = BatchNormalization()(conv6)
+    act6 = Activation("relu")(batch6)
+    concat6 = Concatenate()([act3,act6])
     #50x50
     
-    x = UpSampling2D(size=(2, 2))(x)
-    x = Conv2D(filter_depth[1], (kernel_size, kernel_size), padding="same")(x)
-    x = BatchNormalization()(x)
-    y2 = Activation("relu")(x)
-    x = Concatenate()([x2,y2])
+    up7 = UpSampling2D(size=(2, 2))(concat6)
+    conv7 = Conv2D(filter_depth[1], (kernel_size, kernel_size), padding="same")(up7)
+    batch7 = BatchNormalization()(conv7)
+    act7 = Activation("relu")(batch7)
+    concat7 = Concatenate()([act2,act7])
     #100x100
     
     #Down
-    x = Conv2D(filter_depth[1], (kernel_size, kernel_size), padding="same")(x)
-    x = BatchNormalization()(x)
-    u2 = Activation("relu")(x)
-    x = MaxPooling2D(pool_size=(2, 2))(u2)
+    conv8 = Conv2D(filter_depth[1], (kernel_size, kernel_size), padding="same")(concat7)
+    batch8 = BatchNormalization()(conv8)
+    act8 = Activation("relu")(batch8)
+    pool8 = MaxPooling2D(pool_size=(2, 2))(act8)
     #50x50
     
-    x = Conv2D(filter_depth[2], (kernel_size, kernel_size), padding="same")(x)
-    x = BatchNormalization()(x)
-    u3 = Activation("relu")(x)
-    x = MaxPooling2D(pool_size=(2, 2))(u3)
+    conv9 = Conv2D(filter_depth[2], (kernel_size, kernel_size), padding="same")(pool8)
+    batch9 = BatchNormalization()(conv9)
+    act9 = Activation("relu")(batch9)
+    pool9 = MaxPooling2D(pool_size=(2, 2))(act9)
     
     #25x25
     
     #Flat
-    x = Conv2D(filter_depth[3], (kernel_size, kernel_size), padding="same")(x)
-    x = BatchNormalization()(x)
-    x = Activation("relu")(x)
+    conv10 = Conv2D(filter_depth[3], (kernel_size, kernel_size), padding="same")(pool9)
+    batch10 = BatchNormalization()(conv10)
+    act10 = Activation("relu")(batch10)
     #25x25
     
-    x = Conv2D(filter_depth[3], (kernel_size, kernel_size), padding="same")(x)
-    x = BatchNormalization()(x)
-    x = Activation("relu")(x)
+    conv11 = Conv2D(filter_depth[3], (kernel_size, kernel_size), padding="same")(act10)
+    batch11 = BatchNormalization()(conv11)
+    act11 = Activation("relu")(batch11)
     #25x25
     
     #Encoder
-    x = UpSampling2D(size=(2, 2))(x)
-    x = Conv2D(filter_depth[2], (kernel_size, kernel_size), padding="same")(x)
-    x = BatchNormalization()(x)
-    z3 = Activation("relu")(x)
-    x = Concatenate()([u3,z3])
+    up12 = UpSampling2D(size=(2, 2))(act11)
+    conv12 = Conv2D(filter_depth[2], (kernel_size, kernel_size), padding="same")(up12)
+    batch12 = BatchNormalization()(conv12)
+    act12 = Activation("relu")(batch12)
+    concat12 = Concatenate()([act9,act12])
     #50x50
     
-    x = UpSampling2D(size=(2, 2))(x)
-    x = Conv2D(filter_depth[1], (kernel_size, kernel_size), padding="same")(x)
-    x = BatchNormalization()(x)
-    z2 =  Activation("relu")(x)
-    x = Concatenate()([u2,z2])
+    up13 = UpSampling2D(size=(2, 2))(concat12)
+    conv13 = Conv2D(filter_depth[1], (kernel_size, kernel_size), padding="same")(up13)
+    batch13 = BatchNormalization()(conv13)
+    act13 =  Activation("relu")(batch13)
+    concat13 = Concatenate()([act8,act13])
     #100x100
     
-    x = UpSampling2D(size=(2, 2))(x)
-    x = Conv2D(filter_depth[0], (kernel_size, kernel_size), padding="same")(x)
-    x = BatchNormalization()(x)
-    z1 = Activation("relu")(x)
-    x = Concatenate()([x1,z1])
+    up14 = UpSampling2D(size=(2, 2))(concat13)
+    conv14 = Conv2D(filter_depth[0], (kernel_size, kernel_size), padding="same")(up14)
+    batch14 = BatchNormalization()(conv14)
+    act14 = Activation("relu")(batch14)
+    concat14 = Concatenate()([act1,act14])
     #200x200
     
-    x = Conv2D(classes, (1,1), padding="valid")(x)
+    conv15 = Conv2D(classes, (1,1), padding="valid")(concat14)
     
     
-    x = Reshape((input_shape[0]*input_shape[1],classes))(x)
-    x = Activation("softmax")(x)
+    reshape15 = Reshape((input_shape[0]*input_shape[1],classes))(conv15)
+    act15 = Activation("softmax")(reshape15)
     
-    model = Model(img_input, x)
+    model = Model(img_input, act15)
 
     return model
