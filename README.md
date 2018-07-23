@@ -32,7 +32,7 @@ XNet outputs a mask of equal size to the input images.
 
 XNet is trained on a small dataset which has undergone
 augmention. Examples of this augmentation step can be found in the
-```augmentations.ipynb``` notebook. Similarly the ```Training``` folder contains python scripts that perform the necessary augementations.
+```augmentations.ipynb``` notebook in the ```Augmentations``` folder. Similarly the ```Training``` folder contains python scripts that perform the necessary augementations.
 
 Running ```train.py``` from the ```Training``` folder calls various other scripts to perform one of two possible ways of augmenting the images:
 
@@ -70,3 +70,5 @@ As this work grew out of work with a corporation we are sadly unable to share th
 
 For more information and context see the conference poster
 ```Poster.pdf```.
+
+Please note that some of the path variables may need to be corrected in order to utilise the current filing system. These are planned to be updated in the future.
