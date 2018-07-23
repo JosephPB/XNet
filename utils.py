@@ -15,6 +15,7 @@ def balanced_test_val_split(main_path, data_to_add, image_size, train_size, n_cl
 	labels_found = []
 	for category in data_to_add:
 		
+		print('Checking labels and data match in %s folder ...'%category)
 		data_path =os.path.join( main_path , 'Images' , category )
 		data_path += os.sep + '*.tif'
 		 
@@ -23,14 +24,12 @@ def balanced_test_val_split(main_path, data_to_add, image_size, train_size, n_cl
 
 		images = glob.glob(data_path)
 		labels =  glob.glob(labels_path)
-		#print('Checking it found something ...')
 		assert len(labels) != 0
 		#print('Checking if number of labeled files matches number of data image files....')
 		# Check that number of labels corresponds to number of images
 
 		assert len(labels) == len(images)
 
-		#print('Check that labels match data ....')
 		# Check that they have the same names
 		label_filename = []
 		img_filename = []
@@ -50,7 +49,7 @@ def balanced_test_val_split(main_path, data_to_add, image_size, train_size, n_cl
 			labels_found.append(  os.path.join(main_path , 'Labels' , category) + os.sep + label_filename[i] + '.jpg')
 
 
-		#print('Names of labels and data in folder %s match perfectly, %d images found . Good job :)'%(category, len(img_filename)))
+		print('Names of labels and data in folder %s match perfectly, %d images found . '%(category, len(img_filename)))
 
 	#shuffle images and labels 
 	c = list(zip(images_found,labels_found))
