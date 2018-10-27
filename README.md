@@ -1,4 +1,5 @@
 # XNet
+<<<<<<< HEAD
 
 XNet is a Convolutional Neural Network designed for the segmentation
 of X-Ray images into bone, soft tissue and open beam
@@ -72,3 +73,5 @@ For more information and context see the conference poster
 ```Poster.pdf```.
 
 Please note that some of the path variables may need to be corrected in order to utilise the current filing system. These are planned to be updated in the future.
+=======
+>>>>>>> fb360ff1e4357e8e3b3838b3e47179b9704c3f56
