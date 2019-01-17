@@ -8,7 +8,7 @@ XNet is an open-source tool desinged to for segmenting medical X-Ray images into
 
 XNet is a neural network based algorithm and requires training on a labelled dataset. The algorithm was designed to only require a small amount of training data (around 150 images), a size deemed manageable by a medical institution.
 
-Information on how to train the network from scratch is given in the ```Training.ipynb``` notebook.
+Information on how to train the network from scratch is given in the ```Training demo.ipynb``` notebook.
 
 For more infomration on the architecture of the network see the ```XNet.py``` file.
 
