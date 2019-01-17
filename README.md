@@ -1,44 +1,36 @@
 # XNet
 
-XNet is a Convolutional Neural Network designed for the segmentation
-of X-Ray images into bone, soft tissue and open beam
-regions. Specifically, it performs well on small datasets with the aim
-to minimise the number of false positives in the soft tissue class.
+XNet is an open-source tool desinged to for segmenting medical X-Ray images into bone, soft tissue and open beam regions. We provide an end-to-end implementation of our original Convolutional Neural Network, including pre-processing and post-processing stages. Specifically, XNet performs well on small datasets with the aim to minimise the number of false positives in the soft tissue class.
 
-## Architecture
+## Usage
 
 ![](./Images/architecture.jpg)
 
-* Built on a typical encoder-decoder architecture as
-inspired by [SegNet](http://mi.eng.cam.ac.uk/projects/segnet/).
+XNet is a neural network based algorithm and requires training on a labelled dataset. The algorithm was designed to only require a small amount of training data (around 150 images), a size deemed manageable by a medical institution.
 
-* Additional feature extraction stage, with weight sharing across some
-  layers.
+Information on how to train the network from scratch is given in the ```Training.ipynb``` notebook.
 
-* Fine and coarse grained feature preservation through concatenation
-  of layers.
+For more infomration on the architecture of the network see the ```XNet.py``` file.
 
-* L2 regularisation at each of the convolutional layers, to decrease overfitting. 
+## Examples
 
-The architecture is described in the ```XNet.py``` file.
-
-## Output
-
-XNet outputs a mask of equal size to the input images.
+XNet outputs a mask of equal size to the input images and has been tested on a variety of bodypars.
 
 ![](./Images/predictions.png)
 
-## Training
+## Data
 
-XNet is trained on a small dataset which has undergone
-augmention. Examples of this augmentation step can be found in the
-```augmentations.ipynb``` notebook in the ```Augmentations``` folder. Similarly the ```Training``` folder contains python scripts that perform the necessary augementations.
+When training our network for inference, we used the following data:
 
-Running ```train.py``` from the ```Training``` folder calls various other scripts to perform one of two possible ways of augmenting the images:
+* 150 X-Ray images.
 
-* 'On the fly augmentation' where a new set of augmentations is generated at each epoch.
+* No scatter correction.
 
-* Pre-augmented images.
+* 1500x1500 ```.tif``` images downsampled to 200x200 pixels
+
+* 20 human body part classes.
+
+As this work grew out of work with a corporation we are sadly unable to share the propriatory data we used.
 
 ## Benchmarking
 
@@ -50,26 +42,10 @@ XNet was benchmarked against two of the leading segmentation networks:
 * [UNet](https://arxiv.org/abs/1505.04597) (found in the ```UNet.py```
   file)
 
-## Data
-
-We trained on a dataset of:
-
-* 150 X-Ray images.
-
-* No scatter correction.
-
-* 1500x1500 ```.tif``` image downsampled to 200x200
-
-* 20 human body part classes.
-
-* Highly imbalanced.
-
-As this work grew out of work with a corporation we are sadly unable to share the propriatory data we used.
+We outperfom both networks on our dataset.
 
 ## More information
 
-For more information and context see the conference poster
-```Poster.pdf```.
+The paper presenting XNet has been accepted for presentation at the 2019 SPIE Medical Imaging conference and will be presented in February. The paper is published on the preprint database: [arXiv](https://arxiv.org/abs/1812.00548). Additioanlly, the conference poster can be found in ```poster.pdf```.
 
 Please note that some of the path variables may need to be corrected in order to utilise the current filing system. These are planned to be updated in the future.
-
