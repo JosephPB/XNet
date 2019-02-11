@@ -15,10 +15,11 @@ from keras import losses
 from keras.optimizers import *
 from keras.callbacks import ModelCheckpoint, LearningRateScheduler, CSVLogger, TensorBoard, EarlyStopping
 from keras.metrics import categorical_accuracy
-from xnet.utils import shuffle_together_simple, random_crop
+from XNet.utils import shuffle_together_simple, random_crop
 from random import randint
 import imgaug as ia
 from keras.utils import to_categorical
+import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from imgaug import augmenters as iaa

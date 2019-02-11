@@ -16,7 +16,7 @@ import argparse
 from keras.utils import to_categorical
 import random
 from keras.preprocessing.image import ImageDataGenerator
-from xnet.utils import random_crop, shuffle_together, balanced_test_val_split
+from XNet.utils import random_crop, shuffle_together, balanced_test_val_split
 import sys
 import time
 

@@ -6,7 +6,7 @@ import cv2
 from random import shuffle
 import os
 import scipy.misc
-import rgb2label as gen_label
+import XNet.rgb2label as gen_label
 
 
 # Utilities

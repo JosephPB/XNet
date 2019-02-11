@@ -1,13 +1,11 @@
 import numpy as np
-from xnet.training import TrainingClass
+from XNet.training import TrainingClass
 import json
 import os
 import sys
 from PostProcessing import PostProcessing
 import glob
 import shutil
-import webbrowser
-import time
 
 param_files = glob.glob("aug*.txt")
 print("I will train on all these parameter files:\n")

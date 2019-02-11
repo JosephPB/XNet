@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
         name = "XNet",
-        version = "1.0.1",
+        version = "0.0.1",
         author = "Joseph Bullock, Carolina Cuesta-Lazaro, & Arnau Quera-Bofarull",
         author_email = "joseph.bullock@durham.ac.uk",
         description = "A CNN to segment X-Ray images",
@@ -18,19 +18,6 @@ setuptools.setup(
             "License :: OSI Approved :: MIT License",
             "Operating System :: OS Independent",
             ],
-        install_requires = [
-            'numpy',
-            'matplotlib',
-            'tensorflow-gpu',
-            'h5py',
-            'scipy',
-            'keras',
-            'opencv-python',
-            'imgaug',
-            'sklearn',
-            'tifffile',
-            'rasterio',
-            'pandas'
-            ]
+        install_requires =  setuptools.find_packages(exclude=('tests', 'docs'))
         )
 
