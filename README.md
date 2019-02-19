@@ -5,6 +5,8 @@ of X-Ray images into bone, soft tissue and open beam
 regions. Specifically, it performs well on small datasets with the aim
 to minimise the number of false positives in the soft tissue class.
 
+This code accompanies the paper published in the SPIE Medical Imaging Conference Proceedings (2019) and can be found on the preprint arXiv at: [arXiv:1812.00548](https://arxiv.org/abs/1812.00548)
+
 ## Architecture
 
 ![](./Images/architecture.jpg)
@@ -30,15 +32,24 @@ XNet outputs a mask of equal size to the input images.
 
 ## Training
 
-XNet is trained on a small dataset which has undergone
-augmention. Examples of this augmentation step can be found in the
-```augmentations.ipynb``` notebook in the ```Augmentations``` folder. Similarly the ```Training``` folder contains python scripts that perform the necessary augementations.
+To train a model:
 
-Running ```train.py``` from the ```Training``` folder calls various other scripts to perform one of two possible ways of augmenting the images:
+1. Open ```Training/generate_parameters.py``` and define your desired hyperparameters
+2. Run ```Training/generate_parameters.py``` to generate a ```paramteres.txt``` file which is read ```Training/TrainingClass.py```
+3. Run ```train.py```
+
+XNet is trained on a small dataset which has undergone augmention. Examples of this augmentation step can be found in the
+```Augmentations/augmentations.ipynb``` notebook. Similarly the ```Training``` folder contains python scripts that perform the necessary augementations.
+
+Running ```Training/train.py``` calls various other scripts to perform one of two possible ways of augmenting the images:
 
 * 'On the fly augmentation' where a new set of augmentations is generated at each epoch.
 
 * Pre-augmented images.
+
+To select which method to use comment out the corresponding lines in the ```fit``` function in the ```Training/TrainingClass.py``` script.
+
+```train.py``` also performs postprocessing to fine tune the results.
 
 ## Benchmarking
 
