@@ -16,7 +16,7 @@ def model(input_shape=(64,64,3), classes=3, kernel_size = 3, filter_depth = (64,
     conv1 = Conv2D(filter_depth[0], (kernel_size, kernel_size), padding="same")(img_input)
     batch1 = BatchNormalization()(conv1)
     act1 = Activation("relu")(batch1)
-    pool1 = MaxPooling2D(pool_size=(2, 2))(pool1)
+    pool1 = MaxPooling2D(pool_size=(2, 2))(act1)
     #100x100
     
     conv2 = Conv2D(filter_depth[1], (kernel_size, kernel_size), padding="same")(pool1)
