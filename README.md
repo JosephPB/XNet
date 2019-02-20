@@ -56,6 +56,9 @@ The paper presenting XNet has been accepted for presentation at the 2019 SPIE Me
 
 Please note that some of the path variables may need to be corrected in order to utilise the current filing system. These are planned to be updated in the future.
 
+If you would like to find out more about how to deploy these models
+saved by the Keras API for production see this [Medium post](https://towardsdatascience.com/freezing-a-keras-model-c2e26cb84a38).
+
 ## Contact
 
 For more information on this work please contect Joseph Bullock (j.p.bullock@durham.ac.uk).
