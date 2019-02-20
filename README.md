@@ -6,6 +6,8 @@
 
 XNet is an open-source tool desinged to for segmenting medical X-Ray images into bone, soft tissue and open beam regions. We provide an end-to-end implementation of our original Convolutional Neural Network, including pre-processing and post-processing stages. Specifically, XNet performs well on small datasets with the aim to minimise the number of false positives in the soft tissue class.
 
+The paper describing XNet can be found  on the preprint database: [arXiv](https://arxiv.org/abs/1812.00548).
+
 ## Usage
 
 ![](./Images/architecture.jpg)
@@ -53,3 +55,7 @@ We outperfom both networks on our dataset.
 The paper presenting XNet has been accepted for presentation at the 2019 SPIE Medical Imaging conference and will be presented in February. The paper is published on the preprint database: [arXiv](https://arxiv.org/abs/1812.00548). Additioanlly, the conference poster can be found in ```poster.pdf```.
 
 Please note that some of the path variables may need to be corrected in order to utilise the current filing system. These are planned to be updated in the future.
+
+## Contact
+
+For more information on this work please contect Joseph Bullock (j.p.bullock@durham.ac.uk).
