@@ -1,5 +1,9 @@
 # XNet
 
+**Note:** If you're at the SPIE Medical Imaging Conference you can try out our demo at this link:
+
+[Demo notebook](https://hub.mybinder.org/user/josephpb-xnet-xn6deh0k/notebooks/Training%20demo.ipynb)
+
 XNet is an open-source tool desinged to for segmenting medical X-Ray images into bone, soft tissue and open beam regions. We provide an end-to-end implementation of our original Convolutional Neural Network, including pre-processing and post-processing stages. Specifically, XNet performs well on small datasets with the aim to minimise the number of false positives in the soft tissue class.
 
 ## Usage
