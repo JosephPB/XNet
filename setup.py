@@ -7,11 +7,11 @@ setuptools.setup(
         name = "XNet",
         version = "0.0.1",
         author = "Joseph Bullock, Carolina Cuesta-Lazaro, & Arnau Quera-Bofarull",
-        author_email = "joseph.bullock@durham.ac.uk",
+        author_email = "j.p.bullock@durham.ac.uk",
         description = "A CNN to segment X-Ray images",
         long_description = long_description,
         long_description_content_type = "text/markdown",
-        url = "https://github.com/josephob/xnet",
+        url = "https://github.com/josephpb/xnet",
         packages = setuptools.find_packages(),
         classifiers = [
             "Programming Language :: Python :: 3",
