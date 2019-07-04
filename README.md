@@ -7,6 +7,19 @@ to minimise the number of false positives in the soft tissue class.
 
 This code accompanies the paper published in the SPIE Medical Imaging Conference Proceedings (2019) and can be found on the preprint arXiv at: [arXiv:1812.00548](https://arxiv.org/abs/1812.00548)
 
+Cite as:
+```
+@proceeding{
+author = {Joseph Bullock,Carolina Cuesta-L\'{a}zaro,Arnau Quera-Bofarull},
+title = {XNet: a convolutional neural network (CNN) implementation for medical x-ray image segmentation suitable for small datasets},
+volume = {10953},
+year = {2019},
+doi = {10.1117/12.2512451},
+URL = {https://doi.org/10.1117/12.2512451},
+eprint = {}
+}
+```
+
 ## Architecture
 
 ![](./Images/architecture.jpg)
