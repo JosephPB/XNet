@@ -44,4 +44,4 @@ tensorflow==1.12.0
 termcolor==1.1.0
 tifffile==2019.1.30
 toolz==0.9.0
-Werkzeug==0.14.1
+Werkzeug==0.15.3
