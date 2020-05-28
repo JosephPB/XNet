@@ -9,14 +9,19 @@ This code accompanies the paper published in the SPIE Medical Imaging Conference
 
 Cite as:
 ```
-@proceeding{
-author = {Joseph Bullock,Carolina Cuesta-L\'{a}zaro,Arnau Quera-Bofarull},
-title = {XNet: a convolutional neural network (CNN) implementation for medical x-ray image segmentation suitable for small datasets},
+@inproceedings{10.1117/12.2512451,
+author = {Joseph Bullock and Carolina Cuesta-Lázaro and Arnau Quera-Bofarull},
+title = {{XNet: a convolutional neural network (CNN) implementation for medical x-ray image segmentation suitable for small datasets}},
 volume = {10953},
+booktitle = {Medical Imaging 2019: Biomedical Applications in Molecular, Structural, and Functional Imaging},
+editor = {Barjor Gimi and Andrzej Krol},
+organization = {International Society for Optics and Photonics},
+publisher = {SPIE},
+pages = {453 -- 463},
+keywords = {machine learning, deep learning, X-Ray segmentation, neural network, small datasets},
 year = {2019},
 doi = {10.1117/12.2512451},
-URL = {https://doi.org/10.1117/12.2512451},
-eprint = {}
+URL = {https://doi.org/10.1117/12.2512451}
 }
 ```
 
