@@ -40,7 +40,7 @@ six==1.12.0
 sklearn==0.0
 snuggs==1.4.2
 tensorboard==1.12.2
-tensorflow==1.12.0
+tensorflow==2.5.1
 termcolor==1.1.0
 tifffile==2019.1.30
 toolz==0.9.0
