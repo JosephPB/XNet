@@ -7,7 +7,7 @@ click-plugins==1.0.4
 cligj==0.5.0
 cloudpickle==0.7.0
 cycler==0.10.0
-dask==1.1.1
+dask==2021.10.0
 decorator==4.3.2
 gast==0.2.2
 grpcio==1.18.0
