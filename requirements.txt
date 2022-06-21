@@ -21,7 +21,7 @@ kiwisolver==1.0.1
 Markdown==3.0.1
 matplotlib==3.0.2
 networkx==2.2
-numpy==1.16.1
+numpy==1.22.0
 opencv-python==4.0.0.21
 pandas==0.24.1
 Pillow==5.4.1
